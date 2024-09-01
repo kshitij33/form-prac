@@ -24,24 +24,6 @@ import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 //   SelectValue,
 // } from "./ui/select";
 
-// // Table "core_mstr_organization_tbl" {
-// //     "org_id" int [pk]
-// //     "org_uuid" uuid
-// //     "org_name" varchar(150) ------ Done
-// //     "short_name" varchar(50)
-// //     "email" varchar(100) ----- Done
-// //     "logo_path" varchar(255)
-// //     "status" "char (1)" ----- Done
-// //     }
-// //     Table "core_mstr_organization_details_tbl" {
-// //     "org_id" int [pk]
-// //     "phone" varchar(13) ------  Done
-// //     "created_at" timestamp
-// //     "created_by" varchar(50)
-// //     "updated_at" timestamp
-// //     "updated_by" varchar(50)
-// //     }Org Settings page: Org details form
-
 // const OrgNameSchema = z.string().min(3, "Enter the organization name");
 // const emailSchema = z.string().min(3, "email invalid");
 // const statusSchema = z.string().max(1);
