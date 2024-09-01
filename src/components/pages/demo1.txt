@@ -1,0 +1,366 @@
+// import React from "react";
+// import { useForm } from "@tanstack/react-form";
+// // import { Input } from "./ui/input";
+// // import { Label } from "./ui/label";
+// import { Input } from "../ui/input";
+// // import { Label } from "../ui/input";
+// import { Label } from "@radix-ui/react-label";
+// import { z } from "zod";
+// import { Button } from "../ui/button";
+
+// const OrganizationSchema = z.object({
+//   org_name: z.string().nonempty("Org name is required"),
+//   email: z.string().email("Invalid email address"),
+// });
+
+// const NewhtmlForm = () => {
+//   const form = useForm({
+//     defaultValues: {
+//       org_name: "",
+//       email: "",
+//     },
+//     validate: ({ value }) => {
+//       const result = OrganizationSchema.safeParse(value);
+//       if (!result.success) {
+//         return result.error.format();
+//       }
+//     },
+//     onSubmit: ({ value }) => {
+//       console.log("Submitted values:", value);
+//     },
+//   });
+
+//   return (
+//     // <div className="min-h-screen p-6 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+//     //   <div className="container max-w-screen-lg mx-auto">
+//     //     <div>
+//     //       <h2 className="font-semibold text-xl text-gray-600 dark:text-gray-200">
+//     //         Organization Form
+//     //       </h2>
+//     //       <p className="text-gray-500 dark:text-gray-400 mb-6">
+//     //         Please fill out all the fields related to the organization.
+//     //       </p>
+
+//     //       <div className="bg-white dark:bg-gray-800 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+//     //         <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+//     //           <div className="text-gray-600 dark:text-gray-300">
+//     //             <p className="font-medium text-lg">Organization Details</p>
+//     //             <p>Please fill out all the fields.</p>
+//     //           </div>
+
+//     //           <div className="lg:col-span-2">
+//     //             <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+//     //               {/* <div className="md:col-span-5">
+//     //             <label htmlFor="org_id" className="dark:text-gray-300">Organization ID</label>
+//     //             <input type="number" name="org_id" id="org_id" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" value="" />
+//     //           </div>
+
+//     //           <div className="md:col-span-5">
+//     //             <label htmlFor="org_uuid" className="dark:text-gray-300">Organization UUID</label>
+//     //             <input type="text" name="org_uuid" id="org_uuid" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" value="" />
+//     //           </div> */}
+
+//     //               <div className="md:col-span-5">
+//     //                 <label htmlFor="org_name" className="dark:text-gray-300">
+//     //                   Organization Name
+//     //                 </label>
+//     //                 <input
+//     //                   type="text"
+//     //                   name="org_name"
+//     //                   id="org_name"
+//     //                   className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600"
+//     //                   value=""
+//     //                 />
+//     //               </div>
+
+//     //               {/* <div className="md:col-span-3">
+//     //             <label htmlFor="short_name" className="dark:text-gray-300">Short Name</label>
+//     //             <input type="text" name="short_name" id="short_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" value="" />
+//     //           </div> */}
+
+//     //               <div className="md:col-span-2">
+//     //                 <label htmlFor="email" className="dark:text-gray-300">
+//     //                   Email Address
+//     //                 </label>
+//     //                 <input
+//     //                   type="email"
+//     //                   name="email"
+//     //                   id="email"
+//     //                   className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600"
+//     //                   value=""
+//     //                   placeholder="email@domain.com"
+//     //                 />
+//     //               </div>
+
+//     //               {/* <div className="md:col-span-5">
+//     //             <label htmlFor="logo_path" className="dark:text-gray-300">Logo Path</label>
+//     //             <input type="text" name="logo_path" id="logo_path" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" value="" />
+//     //           </div>
+
+//     //           <div className="md:col-span-2">
+//     //             <label htmlFor="status" className="dark:text-gray-300">Status</label>
+//     //             <input type="text" name="status" id="status" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" value="" placeholder="A/I" />
+//     //           </div> */}
+
+//     //               <div className="md:col-span-5 text-right">
+//     //                 <div className="inline-flex items-end">
+//     //                   <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+//     //                     Submit
+//     //                   </button>
+//     //                 </div>
+//     //               </div>
+//     //             </div>
+//     //           </div>
+//     //         </div>
+//     //       </div>
+//     //     </div>
+//     //   </div>
+//     // </div>
+//     <form
+//       className="flex flex-col gap-4"
+//       onSubmit={(e) => {
+//         e.preventDefault();
+//         form.handleSubmit();
+//       }}
+//     >
+//       <form.Field
+//         name="org_name"
+//         children={(field) => (
+//           <>
+//             <Label htmlFor="org_id">Organization name</Label>
+//             <Input
+//               type="text"
+//               value={field.state.value}
+//               onChange={(e) => field.handleChange(e.target.value)}
+//             />
+//             {field.state.meta.errors && (
+//               <div className="text-red-500 text-sm mt-1">
+//                 {field.state.meta.errors}
+//               </div>
+//             )}
+//           </>
+//         )}
+//       />
+//       <form.Field
+//         name="email"
+//         children={(field) => (
+//           <>
+//             <Label htmlFor="org_id">Organization email</Label>
+//             <Input
+//               type="text"
+//               value={field.state.value}
+//               onChange={(e) => field.handleChange(e.target.value)}
+//             />
+//             {field.state.meta.errors && (
+//               <div className="text-red-500 text-sm mt-1">
+//                 {field.state.meta.errors}
+//               </div>
+//             )}
+//           </>
+//         )}
+//       />
+//       <Button type="submit" onClick={form.handleSubmit}>
+//                         Submit
+//                     </Button>
+//     </form>
+//   );
+// };
+
+// export default NewhtmlForm;
+
+// import { useForm } from "@tanstack/react-form";
+// import { useState } from "react";
+// import { Button } from "./ui/button";
+// import {
+//     Card,
+//     CardContent,
+//     CardDescription,
+//     CardFooter,
+//     CardHeader,
+//     CardTitle,
+// } from "./ui/card";
+// import { Input } from "./ui/input";
+// import { Label } from "./ui/label";
+// import { z } from "zod";
+
+// // Define the validation schema using Zod
+// const OrganizationSchema = z.object({
+//     org_id: z.string().nonempty("Organization ID is required"),
+//     org_uuid: z.string().uuid("Invalid UUID format"),
+//     org_name: z.string().nonempty("Organization name is required"),
+//     short_name: z.string().max(50, "Short name must be 50 characters or less"),
+//     email: z.string().email("Invalid email address"),
+//     status: z.string().length(1, "Status must be a single character"),
+// });
+
+// export const SignUp = () => {
+//     const [count, setCount] = useState(0);
+
+//     const form = useForm({
+//         defaultValues: {
+//             org_id: "",
+//             org_uuid: "",
+//             org_name: "",
+//             short_name: "",
+//             email: "",
+//             status: "",
+//         },
+//         validate: ({ value }) => {
+//             const result = OrganizationSchema.safeParse(value);
+//             if (!result.success) {
+//                 return result.error.format();
+//             }
+//         },
+//         onSubmit: ({ value }) => {
+//             console.log("Submitted values:", value);
+//         },
+//     });
+
+//     console.log("Form Rerender");
+
+//     return (
+//         <div>
+//             <Card className="w-[400px]">
+//                 <CardHeader>
+//                     <CardTitle>Reactive Organization Form</CardTitle>
+//                     <CardDescription>
+//                         Enter the organization details below:
+//                     </CardDescription>
+//                 </CardHeader>
+//                 <CardContent>
+//                     <form
+//                         className="flex flex-col gap-4"
+//                         onSubmit={(e) => {
+//                             e.preventDefault();
+//                             form.handleSubmit();
+//                         }}
+//                     >
+//                         <form.Field
+//                             name="org_id"
+//                             children={(field) => (
+//                                 <>
+//                                     <Label htmlFor="org_id">Organization ID</Label>
+//                                     <Input
+//                                         type="text"
+//                                         value={field.state.value}
+//                                         onChange={(e) => field.handleChange(e.target.value)}
+//                                     />
+//                                     {field.state.meta.errors && (
+//                                         <div className="text-red-500 text-sm mt-1">
+//                                             {field.state.meta.errors}
+//                                         </div>
+//                                     )}
+//                                 </>
+//                             )}
+//                         />
+//                         <form.Field
+//                             name="org_uuid"
+//                             children={(field) => (
+//                                 <>
+//                                     <Label htmlFor="org_uuid">Organization UUID</Label>
+//                                     <Input
+//                                         type="text"
+//                                         value={field.state.value}
+//                                         onChange={(e) => field.handleChange(e.target.value)}
+//                                     />
+//                                     {field.state.meta.errors && (
+//                                         <div className="text-red-500 text-sm mt-1">
+//                                             {field.state.meta.errors}
+//                                         </div>
+//                                     )}
+//                                 </>
+//                             )}
+//                         />
+//                         <form.Field
+//                             name="org_name"
+//                             children={(field) => (
+//                                 <>
+//                                     <Label htmlFor="org_name">Organization Name</Label>
+//                                     <Input
+//                                         type="text"
+//                                         value={field.state.value}
+//                                         onChange={(e) => field.handleChange(e.target.value)}
+//                                     />
+//                                     {field.state.meta.errors && (
+//                                         <div className="text-red-500 text-sm mt-1">
+//                                             {field.state.meta.errors}
+//                                         </div>
+//                                     )}
+//                                 </>
+//                             )}
+//                         />
+//                         <form.Field
+//                             name="short_name"
+//                             children={(field) => (
+//                                 <>
+//                                     <Label htmlFor="short_name">Short Name</Label>
+//                                     <Input
+//                                         type="text"
+//                                         value={field.state.value}
+//                                         onChange={(e) => field.handleChange(e.target.value)}
+//                                     />
+//                                     {field.state.meta.errors && (
+//                                         <div className="text-red-500 text-sm mt-1">
+//                                             {field.state.meta.errors}
+//                                         </div>
+//                                     )}
+//                                 </>
+//                             )}
+//                         />
+//                         <form.Field
+//                             name="email"
+//                             children={(field) => (
+//                                 <>
+//                                     <Label htmlFor="email">Email</Label>
+//                                     <Input
+//                                         type="email"
+//                                         value={field.state.value}
+//                                         onChange={(e) => field.handleChange(e.target.value)}
+//                                     />
+//                                     {field.state.meta.errors && (
+//                                         <div className="text-red-500 text-sm mt-1">
+//                                             {field.state.meta.errors}
+//                                         </div>
+//                                     )}
+//                                 </>
+//                             )}
+//                         />
+//                         <form.Field
+//                             name="status"
+//                             children={(field) => (
+//                                 <>
+//                                     <Label htmlFor="status">Status</Label>
+//                                     <Input
+//                                         type="text"
+//                                         value={field.state.value}
+//                                         onChange={(e) => field.handleChange(e.target.value)}
+//                                     />
+//                                     {field.state.meta.errors && (
+//                                         <div className="text-red-500 text-sm mt-1">
+//                                             {field.state.meta.errors}
+//                                         </div>
+//                                     )}
+//                                 </>
+//                             )}
+//                         />
+//                     </form>
+//                 </CardContent>
+//                 <CardFooter className="flex justify-between">
+//                     <Button type="submit" onClick={form.handleSubmit}>
+//                         Submit
+//                     </Button>
+//                 </CardFooter>
+//             </Card>
+//             <div className="mt-4 flex gap-2 items-center">
+//                 Count: {count}
+//                 <Button
+//                     size={"sm"}
+//                     variant={"secondary"}
+//                     onClick={() => setCount((c) => c + 1)}
+//                 >
+//                     +1
+//                 </Button>
+//             </div>
+//         </div>
+//     );
+// };
